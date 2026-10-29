@@ -1,0 +1,4 @@
+keyword 0.6 ms per query
+vector 33.2 ms per query
+hybrid 35.0 ms per query
+embed question: 32.5 ms   vector lookup (k=50): 0.8 ms
