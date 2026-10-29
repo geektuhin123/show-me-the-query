@@ -5,7 +5,8 @@ Runnable code behind the videos on [Show Me the Query](https://www.youtube.com/@
 | # | Video | Code |
 |---|---|---|
 | 01 | [Why one database index makes a slow query fast](https://youtu.be/QX29qif9-c0) | [geektuhin123/sql-index-demo](https://github.com/geektuhin123/sql-index-demo) |
-| 02 | Embeddings explained: how computers search by meaning | [02-embeddings-search-by-meaning](02-embeddings-search-by-meaning) |
+| 02 | [Embeddings explained: how computers search by meaning](https://youtu.be/q7OK5xvBqVo) | [02-embeddings-search-by-meaning](02-embeddings-search-by-meaning) |
+| 03 | Hybrid RAG explained: keyword + vector search, measured | [03-hybrid-rag](03-hybrid-rag) |
 
 Numbers in the videos come from single runs on one machine. Yours will differ; the shape of the result is what carries over.
 
