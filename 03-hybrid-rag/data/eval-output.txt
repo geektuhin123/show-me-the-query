@@ -1,0 +1,26 @@
+30 questions, hit@5 and MRR@5
+
+keyword  hit@5 23/30 (77%)   MRR 0.71   [exact 15/15   natural 8/15]
+vector   hit@5 25/30 (83%)   MRR 0.71   [exact 15/15   natural 10/15]
+hybrid   hit@5 27/30 (90%)   MRR 0.78   [exact 15/15   natural 12/15]
+
+keyword missed:
+  - my table keeps growing even though I delete rows
+  - how do I stop two users from editing the same row at once
+  - can I index only the rows I actually query, like unpaid orders
+  - how do I see whether my query actually used an index
+  - let each customer see only their own rows
+  - run a query that walks a tree of employees and managers
+  - treat run and running as the same word when searching
+
+vector missed:
+  - how do I stop two users from editing the same row at once
+  - why does the planner choose a bad plan when two columns are correlated
+  - run a query that walks a tree of employees and managers
+  - treat run and running as the same word when searching
+  - why can a query answer straight from the index without reading the table
+
+hybrid missed:
+  - why does the planner choose a bad plan when two columns are correlated
+  - run a query that walks a tree of employees and managers
+  - treat run and running as the same word when searching
