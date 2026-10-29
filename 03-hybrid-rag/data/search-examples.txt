@@ -1,0 +1,44 @@
+
+== keyword ==
+ 1. [481] Dependency Tracking  (ddl-depend.html)
+ 2. [135] Read Committed Isolation Level  (transaction-iso.html#XACT-READ-COMMITTED)
+ 3. [81] EXPLAIN ANALYZE  (using-explain.html#USING-EXPLAIN-ANALYZE)
+ 4. [123] Non-Durable Settings  (non-durability.html)
+ 5. [186] Vacuuming Basics  (routine-vacuuming.html#VACUUM-BASICS)
+
+== vector ==
+ 1. [191] Recovering Disk Space  (routine-vacuuming.html#VACUUM-FOR-SPACE-RECOVERY)
+ 2. [442] Partition Maintenance  (ddl-partitioning.html#DDL-PARTITIONING-DECLARATIVE-MAINTENANCE)
+ 3. [190] Recovering Disk Space  (routine-vacuuming.html#VACUUM-FOR-SPACE-RECOVERY)
+ 4. [428] Inheritance  (ddl-inherit.html)
+ 5. [335] Table Basics  (ddl-basics.html)
+
+== hybrid ==
+ 1. [188] Recovering Disk Space  (routine-vacuuming.html#VACUUM-FOR-SPACE-RECOVERY)
+ 2. [203] Preventing Transaction ID Wraparound Failures  (routine-vacuuming.html#VACUUM-FOR-WRAPAROUND)
+ 3. [186] Vacuuming Basics  (routine-vacuuming.html#VACUUM-BASICS)
+ 4. [362] Foreign Keys  (ddl-constraints.html#DDL-CONSTRAINTS-FK)
+ 5. [369] System Columns  (ddl-system-columns.html)
+
+
+== keyword ==
+ 1. [36] Index-Only Scans and Covering Indexes  (indexes-index-only-scans.html)
+ 2. [197] Updating the Visibility Map  (routine-vacuuming.html#VACUUM-FOR-VISIBILITY-MAP)
+ 3. [464] Partition Pruning  (ddl-partitioning.html#DDL-PARTITION-PRUNING)
+ 4. [182] Locking and Indexes  (locking-indexes.html)
+ 5. [175] Enforcing Consistency with Explicit Blocking Locks  (applevel-consistency.html#NON-SERIALIZABLE-CONSISTENCY)
+
+== vector ==
+ 1. [247] Searching a Table  (textsearch-tables.html#TEXTSEARCH-TABLES-SEARCH)
+ 2. [5] Introduction  (indexes-intro.html)
+ 3. [4] Introduction  (indexes-intro.html)
+ 4. [26] Indexes on Expressions  (indexes-expressional.html)
+ 5. [1] Introduction  (indexes-intro.html)
+
+== hybrid ==
+ 1. [36] Index-Only Scans and Covering Indexes  (indexes-index-only-scans.html)
+ 2. [247] Searching a Table  (textsearch-tables.html#TEXTSEARCH-TABLES-SEARCH)
+ 3. [3] Introduction  (indexes-intro.html)
+ 4. [18] Indexes and ORDER BY  (indexes-ordering.html)
+ 5. [4] Introduction  (indexes-intro.html)
+
