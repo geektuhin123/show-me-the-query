@@ -1,0 +1,33 @@
+python 3.13.18 | numpy 2.5.3
+400,000 words x 50 numbers each
+coffee = [-0.54 -0.3  -0.68  0.16  0.9  -0.9 ] ... (50 numbers)
+
+word similarity (cosine):
+      dog ~ puppy     0.78
+      dog ~ cat       0.92
+      dog ~ laptop    0.29
+   coffee ~ espresso  0.65
+   coffee ~ tire      0.32
+
+query: 'cheap dark roast for my morning brew'
+keyword search: [(1, 'cheap flights to tokyo in spring')]
+embedding search:
+  0.85  best espresso beans for a home coffee machine
+  0.73  stop a kitten from biting your hands
+  0.68  how to bake sourdough bread at home
+  0.67  why does my cat scratch the sofa
+  0.66  cheap flights to tokyo in spring
+  0.64  how to train a dog to stop barking
+  0.63  laptop battery drains too fast
+  0.56  fixing a flat tire on a mountain bike
+
+2D map (PCA of the sentence vectors):
+  -1.42 -0.84  how to train a dog to stop barking
+  +1.06 +0.59  best espresso beans for a home coffee machine
+  -0.87 -0.28  fixing a flat tire on a mountain bike
+  +0.47 -1.57  why does my cat scratch the sofa
+  -1.17 +1.96  cheap flights to tokyo in spring
+  -0.80 +0.10  laptop battery drains too fast
+  +2.75 +0.18  how to bake sourdough bread at home
+  -0.63 -0.51  stop a kitten from biting your hands
+  +0.60 +0.38  QUERY: cheap dark roast for my morning brew
