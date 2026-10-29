@@ -1,0 +1,5 @@
+36 Index-Only Scans and Covering Indexes kw 1 vec 9 0.0309
+247 Searching a Table kw 12 vec 1 0.0303
+3 Introduction kw 6 vec 8 0.0299
+18 Indexes and ORDER BY kw 14 vec 12 0.0274
+4 Introduction kw 27 vec 3 0.0274
