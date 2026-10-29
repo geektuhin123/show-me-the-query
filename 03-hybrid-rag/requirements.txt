@@ -1,0 +1,5 @@
+numpy
+scipy
+safetensors
+tokenizers
+sqlite-vec
