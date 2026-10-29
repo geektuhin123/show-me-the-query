@@ -1,0 +1,32 @@
+400,000 words x 50 numbers each
+coffee = [-0.54 -0.3  -0.68  0.16  0.9  -0.9 ] ... (50 numbers)
+
+word similarity (cosine):
+      dog ~ puppy     0.78
+      dog ~ cat       0.92
+      dog ~ laptop    0.29
+   coffee ~ espresso  0.65
+   coffee ~ tire      0.32
+
+query: 'my puppy is too noisy at night'
+keyword search: [(1, 'laptop battery drains too fast')]
+embedding search:
+  0.81  stop a kitten from biting your hands
+  0.79  how to train a dog to stop barking
+  0.71  best espresso beans for a home coffee machine
+  0.69  why does my cat scratch the sofa
+  0.69  laptop battery drains too fast
+  0.66  cheap flights to tokyo in spring
+  0.59  fixing a flat tire on a mountain bike
+  0.49  how to bake sourdough bread at home
+
+2D map (PCA of the sentence vectors):
+  -1.33 -0.94  how to train a dog to stop barking
+  +1.16 +0.66  best espresso beans for a home coffee machine
+  -0.61 +0.29  fixing a flat tire on a mountain bike
+  +0.59 -1.44  why does my cat scratch the sofa
+  -1.11 +1.90  cheap flights to tokyo in spring
+  -0.61 +0.39  laptop battery drains too fast
+  +2.88 +0.27  how to bake sourdough bread at home
+  -0.56 -0.63  stop a kitten from biting your hands
+  -0.42 -0.49  QUERY: my puppy is too noisy at night
