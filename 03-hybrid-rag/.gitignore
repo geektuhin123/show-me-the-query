@@ -1,0 +1,6 @@
+rag.db
+data/sgml/
+data/chunks.jsonl
+__pycache__/
+*.pyc
+.DS_Store
