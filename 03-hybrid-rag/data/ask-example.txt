@@ -1,0 +1,110 @@
+Answer the question using only the sources below. Cite them like [1]. If the sources don't contain the answer, say so.
+
+Sources:
+[1] Recovering Disk Space (https://www.postgresql.org/docs/16/routine-vacuuming.html#VACUUM-FOR-SPACE-RECOVERY)
+The usual goal of routine vacuuming is to do standard VACUUMs
+ often enough to avoid needing VACUUM FULL. The
+ autovacuum daemon attempts to work this way, and in fact will
+ never issue VACUUM FULL. In this approach, the idea
+ is not to keep tables at their minimum size, but to maintain steady-state
+ usage of disk space: each table occupies space equivalent to its
+ minimum size plus however much space gets used up between vacuum runs.
+ Although VACUUM FULL can be used to shrink a table back
+ to its minimum size and return the disk space to the operating system,
+ there is not much point in this if the table will just grow again in the
+ future. Thus, moderately-frequent standard VACUUM runs are a
+ better approach than infrequent VACUUM FULL runs for
+ maintaining heavily-updated tables.
+
+[2] Preventing Transaction ID Wraparound Failures (https://www.postgresql.org/docs/16/routine-vacuuming.html#VACUUM-FOR-WRAPAROUND)
+The effective maximum for vacuum_freeze_table_age is 0.95 *
+ autovacuum_freeze_max_age; a setting higher than that will be
+ capped to the maximum. A value higher than
+ autovacuum_freeze_max_age wouldn't make sense because an
+ anti-wraparound autovacuum would be triggered at that point anyway, and
+ the 0.95 multiplier leaves some breathing room to run a manual
+ VACUUM before that happens. As a rule of thumb,
+ vacuum_freeze_table_age should be set to a value somewhat
+ below autovacuum_freeze_max_age, leaving enough gap so that
+ a regularly scheduled VACUUM or an autovacuum triggered by
+ normal delete and update activity is run in that window. Setting it too
+ close could lead to anti-wraparound autovacuums, even though the table
+ was recently vacuumed to reclaim space, whereas lower values lead to more
+ frequent aggressive vacuuming.
+
+[3] Vacuuming Basics (https://www.postgresql.org/docs/16/routine-vacuuming.html#VACUUM-BASICS)
+There are two variants of VACUUM: standard VACUUM
+ and VACUUM FULL. VACUUM FULL can reclaim more
+ disk space but runs much more slowly. Also,
+ the standard form of VACUUM can run in parallel with production
+ database operations. (Commands such as SELECT,
+ INSERT, UPDATE, and
+ DELETE will continue to function normally, though you
+ will not be able to modify the definition of a table with commands such as
+ ALTER TABLE while it is being vacuumed.)
+ VACUUM FULL requires an
+ ACCESS EXCLUSIVE lock on the table it is
+ working on, and therefore cannot be done in parallel with other use
+ of the table. Generally, therefore,
+ administrators should strive to use standard VACUUM and
+ avoid VACUUM FULL.
+
+VACUUM creates a substantial amount of I/O
+ traffic, which can cause poor performance for other active sessions.
+ There are configuration parameters that can be adjusted to reduce the
+ performance impact of background vacuuming - see
+ .
+
+[4] Foreign Keys (https://www.postgresql.org/docs/16/ddl-constraints.html#DDL-CONSTRAINTS-FK)
+Restricting and cascading deletes are the two most common options.
+ RESTRICT prevents deletion of a
+ referenced row. NO ACTION means that if any
+ referencing rows still exist when the constraint is checked, an error
+ is raised; this is the default behavior if you do not specify anything.
+ (The essential difference between these two choices is that
+ NO ACTION allows the check to be deferred until
+ later in the transaction, whereas RESTRICT does not.)
+ CASCADE specifies that when a referenced row is deleted,
+ row(s) referencing it should be automatically deleted as well.
+ There are two other options:
+ SET NULL and SET DEFAULT.
+ These cause the referencing column(s) in the referencing row(s)
+ to be set to nulls or their default
+ values, respectively, when the referenced row is deleted.
+ Note that these do not excuse you from observing any constraints.
+ For example, if an action specifies SET DEFAULT
+ but the default value would not satisfy the foreign key constraint, the
+ operation will fail.
+
+[5] System Columns (https://www.postgresql.org/docs/16/ddl-system-columns.html)
+The identity (transaction ID) of the deleting transaction, or
+ zero for an undeleted row version. It is possible for this column to
+ be nonzero in a visible row version. That usually indicates that the
+ deleting transaction hasn't committed yet, or that an attempted
+ deletion was rolled back.
+
+cmax
+
+The command identifier within the deleting transaction, or zero.
+
+ctid
+
+The physical location of the row version within its table. Note that
+ although the ctid can be used to
+ locate the row version very quickly, a row's
+ ctid will change if it is
+ updated or moved by VACUUM FULL. Therefore
+ ctid is useless as a long-term row
+ identifier. A primary key should be used to identify logical rows.
+
+Transaction identifiers are also 32-bit quantities. In a
+ long-lived database it is possible for transaction IDs to wrap
+ around. This is not a fatal problem given appropriate maintenance
+ procedures; see for details. It is
+ unwise, however, to depend on the uniqueness of transaction IDs
+ over the long term (more than one billion transactions).
+
+Question: my table keeps growing even though I delete rows
+Answer:
+
+(Set LLM_BASE_URL and LLM_MODEL for any OpenAI-compatible endpoint, e.g. Ollama, to get an answer.)
